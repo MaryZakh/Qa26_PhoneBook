@@ -33,9 +33,10 @@ public class HelperContact extends HelperBase {
 
     public boolean isContactAddedByName(String name) {
         List<WebElement> list = wd.findElements(By.cssSelector("h2"));
-
+pause(500);
         for (WebElement element : list) {
             if (element.getText().equals(name)) {
+                pause(500);
                 return true;
             }
         }
@@ -44,9 +45,11 @@ public class HelperContact extends HelperBase {
 
     public boolean isContactAddedByPhone(String phone) {
         List<WebElement> list = wd.findElements(By.cssSelector("h3"));
+        pause(500);
 
         for (WebElement element : list) {
             if (element.getText().equals(phone)) {
+                pause(500);
                 return true;
             }
         }
@@ -94,7 +97,7 @@ public class HelperContact extends HelperBase {
     }
 
     private void addOneContact() {
-        int i = new Random().nextInt(1000) + 1000;
+        int i = (int) ((System.currentTimeMillis()/1000)%3600);
 
         Contact contact = Contact.builder()
                 .name("Harry"+i)
